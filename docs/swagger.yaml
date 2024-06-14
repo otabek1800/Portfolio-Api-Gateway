@@ -1,0 +1,668 @@
+definitions:
+  genprotos.Education:
+    properties:
+      degree:
+        type: string
+      end_date:
+        type: string
+      field_of_study:
+        type: string
+      id:
+        type: string
+      institution:
+        type: string
+      start_date:
+        type: string
+      user_id:
+        type: string
+    type: object
+  genprotos.Experience:
+    properties:
+      company:
+        type: string
+      description:
+        type: string
+      end_date:
+        type: string
+      id:
+        type: string
+      start_date:
+        type: string
+      title:
+        type: string
+      user_id:
+        type: string
+    type: object
+  genprotos.GetAllEducations:
+    properties:
+      restorans:
+        items:
+          $ref: '#/definitions/genprotos.Education'
+        type: array
+    type: object
+  genprotos.GetAllExperiences:
+    properties:
+      experiences:
+        items:
+          $ref: '#/definitions/genprotos.Experience'
+        type: array
+    type: object
+  genprotos.GetAllProjects:
+    properties:
+      projects:
+        items:
+          $ref: '#/definitions/genprotos.Project'
+        type: array
+    type: object
+  genprotos.GetAllSkills:
+    properties:
+      restorans:
+        items:
+          $ref: '#/definitions/genprotos.Skill'
+        type: array
+    type: object
+  genprotos.Project:
+    properties:
+      description:
+        type: string
+      id:
+        type: string
+      title:
+        type: string
+      url:
+        type: string
+      user_id:
+        type: string
+    type: object
+  genprotos.Skill:
+    properties:
+      id:
+        type: string
+      level:
+        type: string
+      name:
+        type: string
+      user_id:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /Project/getbyid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: GetById page
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: GetById Successful
+          schema:
+            $ref: '#/definitions/genprotos.Project'
+        "401":
+          description: Error while GetByIdd
+          schema:
+            type: string
+      summary: GetById Project
+      tags:
+      - Project
+  /education/create:
+    post:
+      consumes:
+      - application/json
+      description: Create page
+      parameters:
+      - description: Create
+        in: body
+        name: Create
+        required: true
+        schema:
+          $ref: '#/definitions/genprotos.Education'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Create Successful
+          schema:
+            type: string
+        "401":
+          description: Error while Created
+          schema:
+            type: string
+      summary: Create Porfolio
+      tags:
+      - Education
+  /education/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete page
+      parameters:
+      - description: Education ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Delete Successful
+          schema:
+            type: string
+        "401":
+          description: Error while Deleted
+          schema:
+            type: string
+      summary: Delete Education
+      tags:
+      - Education
+  /education/getall:
+    get:
+      consumes:
+      - application/json
+      description: GetAll page
+      parameters:
+      - in: query
+        name: degree
+        type: string
+      - in: query
+        name: end_date
+        type: string
+      - in: query
+        name: field_of_study
+        type: string
+      - in: query
+        name: id
+        type: string
+      - in: query
+        name: institution
+        type: string
+      - in: query
+        name: start_date
+        type: string
+      - in: query
+        name: user_id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: GetAll Successful
+          schema:
+            $ref: '#/definitions/genprotos.GetAllEducations'
+        "401":
+          description: Error while GetAlld
+          schema:
+            type: string
+      summary: GetAll Education
+      tags:
+      - Education
+  /education/getbyid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: GetById page
+      parameters:
+      - description: Education ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: GetById Successful
+          schema:
+            $ref: '#/definitions/genprotos.Education'
+        "401":
+          description: Error while GetByIdd
+          schema:
+            type: string
+      summary: GetById Education
+      tags:
+      - Education
+  /education/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update page
+      parameters:
+      - description: Education ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update
+        in: body
+        name: Update
+        required: true
+        schema:
+          $ref: '#/definitions/genprotos.Education'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Update Successful
+          schema:
+            type: string
+        "401":
+          description: Error while created
+          schema:
+            type: string
+      summary: Update Education
+      tags:
+      - Education
+  /experience/create:
+    post:
+      consumes:
+      - application/json
+      description: Create page
+      parameters:
+      - description: Create
+        in: body
+        name: Create
+        required: true
+        schema:
+          $ref: '#/definitions/genprotos.Experience'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Create Successful
+          schema:
+            type: string
+        "401":
+          description: Error while Created
+          schema:
+            type: string
+      summary: Create Porfolio
+      tags:
+      - Experience
+  /experience/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete page
+      parameters:
+      - description: Experience ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Delete Successful
+          schema:
+            type: string
+        "401":
+          description: Error while Deleted
+          schema:
+            type: string
+      summary: Delete Experience
+      tags:
+      - Experience
+  /experience/getall:
+    get:
+      consumes:
+      - application/json
+      description: GetAll page
+      parameters:
+      - in: query
+        name: company
+        type: string
+      - in: query
+        name: description
+        type: string
+      - in: query
+        name: end_date
+        type: string
+      - in: query
+        name: id
+        type: string
+      - in: query
+        name: start_date
+        type: string
+      - in: query
+        name: title
+        type: string
+      - in: query
+        name: user_id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: GetAll Successful
+          schema:
+            $ref: '#/definitions/genprotos.GetAllExperiences'
+        "401":
+          description: Error while GetAlld
+          schema:
+            type: string
+      summary: GetAll Experience
+      tags:
+      - Experience
+  /experience/getbyid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: GetById page
+      parameters:
+      - description: Experience ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: GetById Successful
+          schema:
+            $ref: '#/definitions/genprotos.Experience'
+        "401":
+          description: Error while GetByIdd
+          schema:
+            type: string
+      summary: GetById Experience
+      tags:
+      - Experience
+  /experience/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update page
+      parameters:
+      - description: Experience ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update
+        in: body
+        name: Update
+        required: true
+        schema:
+          $ref: '#/definitions/genprotos.Experience'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Update Successful
+          schema:
+            type: string
+        "401":
+          description: Error while created
+          schema:
+            type: string
+      summary: Update Experience
+      tags:
+      - Experience
+  /project/create:
+    post:
+      consumes:
+      - application/json
+      description: Create page
+      parameters:
+      - description: Create
+        in: body
+        name: Create
+        required: true
+        schema:
+          $ref: '#/definitions/genprotos.Project'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Create Successful
+          schema:
+            type: string
+        "401":
+          description: Error while Created
+          schema:
+            type: string
+      summary: Create Porfolio
+      tags:
+      - Project
+  /project/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete page
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Delete Successful
+          schema:
+            type: string
+        "401":
+          description: Error while Deleted
+          schema:
+            type: string
+      summary: Delete Project
+      tags:
+      - Project
+  /project/getall:
+    get:
+      consumes:
+      - application/json
+      description: GetAll page
+      parameters:
+      - in: query
+        name: description
+        type: string
+      - in: query
+        name: id
+        type: string
+      - in: query
+        name: title
+        type: string
+      - in: query
+        name: url
+        type: string
+      - in: query
+        name: user_id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: GetAll Successful
+          schema:
+            $ref: '#/definitions/genprotos.GetAllProjects'
+        "401":
+          description: Error while GetAlld
+          schema:
+            type: string
+      summary: GetAll Project
+      tags:
+      - Project
+  /project/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update page
+      parameters:
+      - description: Project ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update
+        in: body
+        name: Update
+        required: true
+        schema:
+          $ref: '#/definitions/genprotos.Project'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Update Successful
+          schema:
+            type: string
+        "401":
+          description: Error while created
+          schema:
+            type: string
+      summary: Update Project
+      tags:
+      - Project
+  /skill/create:
+    post:
+      consumes:
+      - application/json
+      description: Create page
+      parameters:
+      - description: Create
+        in: body
+        name: Create
+        required: true
+        schema:
+          $ref: '#/definitions/genprotos.Skill'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Create Successful
+          schema:
+            type: string
+        "401":
+          description: Error while Created
+          schema:
+            type: string
+      summary: Create Porfolio
+      tags:
+      - Skill
+  /skill/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete page
+      parameters:
+      - description: Skill ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Delete Successful
+          schema:
+            type: string
+        "401":
+          description: Error while Deleted
+          schema:
+            type: string
+      summary: Delete Skill
+      tags:
+      - Skill
+  /skill/getall:
+    get:
+      consumes:
+      - application/json
+      description: GetAll page
+      parameters:
+      - in: query
+        name: id
+        type: string
+      - in: query
+        name: level
+        type: string
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: user_id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: GetAll Successful
+          schema:
+            $ref: '#/definitions/genprotos.GetAllSkills'
+        "401":
+          description: Error while GetAlld
+          schema:
+            type: string
+      summary: GetAll Skill
+      tags:
+      - Skill
+  /skill/getbyid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: GetById page
+      parameters:
+      - description: Skill ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: GetById Successful
+          schema:
+            $ref: '#/definitions/genprotos.Skill'
+        "401":
+          description: Error while GetByIdd
+          schema:
+            type: string
+      summary: GetById Skill
+      tags:
+      - Skill
+  /skill/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update page
+      parameters:
+      - description: Skill ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update
+        in: body
+        name: Update
+        required: true
+        schema:
+          $ref: '#/definitions/genprotos.Skill'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Update Successful
+          schema:
+            type: string
+        "401":
+          description: Error while created
+          schema:
+            type: string
+      summary: Update Skill
+      tags:
+      - Skill
+swagger: "2.0"
