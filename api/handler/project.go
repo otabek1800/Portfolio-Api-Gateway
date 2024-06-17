@@ -6,8 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Create 			Project handles the creation of a new Porfolio
-// @Summary 		Create Porfolio
+// Create 			Project handles the creation of a new Project
+// @Summary 		Create Project
 // @Description 	Create page
 // @Tags 			Project
 // @Accept  		json

@@ -1,8 +1,8 @@
 package api
 
 import (
-	"github.com/Javokhdev/Portfolio-Api-Gateway/api/handler"
-	_"github.com/Javokhdev/Portfolio-Api-Gateway/docs"
+	"github.com/otsbek1800/Portfolio-Api-Gateway/api/handler"
+	_"github.com/otabek1800/Portfolio-Api-Gateway/docs"
 
 
 	"github.com/gin-gonic/gin"
@@ -52,9 +52,6 @@ func NewGin(h *handler.Handler) *gin.Engine {
 	v.DELETE("/delete/:id", h.DeleteExperience)
 	v.GET("/getall", h.GetAllExperience)
 	v.GET("/getbyid/:id", h.GetByIdExperience)
-
-
-	r.GET("/getskillbyuser/:id", h.GetSkillByUser)
 
 
 	return r

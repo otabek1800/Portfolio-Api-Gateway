@@ -113,17 +113,4 @@ func (h *Handler) GetByIdSkill(ctx *gin.Context) {
 	ctx.JSON(200, res)
 }
 
-func (h *Handler) GetSkillByUser(ctx *gin.Context) {
-	id := pb.ById{Id: ctx.Param("id")}
-	res, err := h.Skill.GetByIdSkill(ctx, &id)
-	if err != nil {
-		panic(err)
-	}
-	user, err:=h.Users.GetByIdUser(ctx, &pb.ById{Id: res.UserId.Id})
-	if err != nil {
-		panic(err)
-	}
-	res.UserId=user
-	ctx.JSON(200, res)
-}
 

@@ -1,7 +1,7 @@
 package handler
 
 import (
-	pb "github.com/Javokhdev/Portfolio-Api-Gateway/genprotos"
+	pb "github.com/otabek1800/Portfolio-Api-Gateway/genprotos"
 
 	"github.com/gin-gonic/gin"
 )
@@ -26,7 +26,7 @@ func (h *Handler) CreateEducation(ctx *gin.Context) {
 	if err != nil {
 		panic(err)
 	}
-	ctx.JSON(200, "Success!!!")
+	ctx.JSON(200, "Success>>>>>>>>")
 }
 
 // UpdateEducation 	handles the creation of a new Education
@@ -50,7 +50,7 @@ func (h *Handler) UpdateEducation(ctx *gin.Context) {
 	if err != nil {
 		panic(err)
 	}
-	ctx.JSON(200, "Success!!!")
+	ctx.JSON(200, "Success>>>>>>>")
 }
 
 // DeleteEducation 	handles the creation of a new Education
@@ -69,7 +69,7 @@ func (h *Handler) DeleteEducation(ctx *gin.Context) {
 	if err != nil {
 		panic(err)
 	}
-	ctx.JSON(200, "Success!!!")
+	ctx.JSON(200, "Success>>>>>>>>")
 }
 
 // GetAllEducation 	handles the creation of a new Education
